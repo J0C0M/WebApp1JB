@@ -6,7 +6,14 @@
     </head>
     <body>
         <header>
-            
+            <img>
+                <img src="" class="DBPlogo-img">
+                <div class="header-middle-part">
+
+                </div>
+                <div class="header-login">
+
+                </div>
         </header>
     
         <main>
