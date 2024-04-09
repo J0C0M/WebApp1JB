@@ -6,15 +6,17 @@
     </head>
     <body>
         <header>
-            <img>
-                <img src="" class="DBPlogo-img">
+            <img src="images/faardyy.png" class="header-img">
+            <div class="header-overlapper">
+                <img src="images/DBPlogo-img" class="">
                 <div class="header-middle-part">
 
                 </div>
                 <div class="header-login">
 
                 </div>
-        </header> blabla
+            </div>
+        </header>
     
         <main>
         </main>
