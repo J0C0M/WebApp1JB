@@ -13,16 +13,22 @@ header
 
 .header-img {
     width: 100%;
-    position: relative;
+    position: absolute;
 }
 
-.header-img-pos {
-    
+.invis-box {
+    width: 100%;
+    height: 100%;
 }
 
 .header-box {
     opacity: 30%;
     background-color: #000000 ; 
+    position: absolute;
+}
+
+.header-text-pos {
+    position: relative;
 }
 
 .header-overlapper {
@@ -33,7 +39,6 @@ header
     color: #F3EFE3;
     height: 24%;
     width: 100%;
-    position: absolute;
     font-family: 'Harlow Solid Italic', sans-serif;
 }
 

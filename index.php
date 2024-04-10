@@ -9,7 +9,7 @@
         <header>
             <img src="images/faardyy.png" class="header-img header-img-pos">
             <div class="header-overlapper header-box"></div>
-            <div class="header-overlapper">
+            <div class="header-overlapper header-text-pos">
                 
                 <img src="images/fardylogotransparent.png" class="logo-header-img">
                 <div class="header-middle-part">
@@ -23,8 +23,9 @@
                 </div>
                 <div class="header-login">
 
-                </div>
+                </div>  
             </div>
+            <div class="invis-box"></div>
         </header>
         <main>
             <divo class="over-ons-container">
