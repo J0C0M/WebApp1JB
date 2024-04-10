@@ -25,7 +25,6 @@
 
                 </div>  
             </div>
-            <div class="invis-box"></div>
         </header>
         <main>
             <divo class="over-ons-container">

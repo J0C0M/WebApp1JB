@@ -6,19 +6,13 @@ html, body {
     background-color: #F3EFE3;
     box-sizing: border-box;
     height: 100%;
+
 }
 
 /*header*/
-header 
-
 .header-img {
     width: 100%;
     position: absolute;
-}
-
-.invis-box {
-    width: 100%;
-    height: 100%;
 }
 
 .header-box {
@@ -77,12 +71,11 @@ header
 }
 
 /*Main page contents*/
-main {
-    display: flex;
-    align-items: center;
-}
 
 .over-ons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 1100px;
     width: 100%;
 }
