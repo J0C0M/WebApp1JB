@@ -19,8 +19,8 @@
                             <h1 class="header-txt">De Betoverde Pannenkoek</h1>
                             
                         </div>
-                        <a class="header-btn" href="index.php">Menukaart</a>
-                        <a class="header-btn" href="index.php">Contact</a>
+                        <a class="header-btn" href="register.php">Menukaart</a>
+                        <a class="header-btn" href="login.php">Contact</a>
                 </div>
                 <div class="header-login">
 
