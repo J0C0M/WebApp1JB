@@ -17,6 +17,7 @@
                         <a class="header-btn" href="index.php">Over Ons</a>
                         <div class="search-bar-titel">
                             <h1 class="header-txt">De Betoverde Pannenkoek</h1>
+                            
                         </div>
                         <a class="header-btn" href="index.php">Menukaart</a>
                         <a class="header-btn" href="index.php">Contact</a>
@@ -27,8 +28,10 @@
             </div>
         </header>
         <main>
-            <divo class="over-ons-container">
+            <div class="over-ons-container">
                 <h1>over ons</h1>
+                <div class=""></div>
+                <div></div>
             </div>
         </main>
 
