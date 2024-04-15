@@ -41,6 +41,7 @@
 </html>
 
 <?php
+
 $host = 'db';
 $db   = 'mydatabase';
 $user = 'user';
@@ -55,7 +56,8 @@ $options = [
 ];
 try{
     $connection = new PDO ($dsn, $user, $pass, $options);
-    } catch (\PDOExceptions $e){
+    } 
+    catch (\PDOExceptions $e){
         echo "Connection failed: " . $e->getMessage();
     }
 ?>
