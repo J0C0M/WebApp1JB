@@ -63,12 +63,16 @@ html, body {
 }
 
 .header-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 10%;
     height:  45%;
     background-color: #000000;
-    opacity: 40%;
     border-radius: 80px;
 }
+
+
 
 /*Main page contents*/
 
@@ -134,3 +138,4 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+

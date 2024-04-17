@@ -1,9 +1,17 @@
+<?php 
+
+include("conn.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Document</title>
         <link rel="stylesheet" href="css/pannenkoeken.css">
         <link href="https://fonts.cdnfonts.com/css/harlow-solid-italic" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/inika" rel="stylesheet">
+
     </head>
     <body>
         <header>
@@ -23,6 +31,7 @@
                         <a class="header-btn" href="login.php">Contact</a>
                 </div>
                 <div class="header-login">
+                <a class="header-btn center" href="login.php">login</a>
                 </div>  
             </div>
         </header>
@@ -33,27 +42,34 @@
                 <div></div>
             </div>
 
-            <?php
-
-            $host = 'db';
-            $db   = 'restaurant';
-            $user = 'root';
-            $pass = 'rootpassword';
-            $charset = 'utf8mb4';
             
-            $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+            <div class="restaurant">
+                <h1 class="menukaart">Betoverende Ontbijt Pannenkoeken:</h1>
+                <?php
 
-            $connection = new PDO ($dsn, $user, $pass);
-
-            $sql = "SELECT * FROM restaurant";
-            $stmt = $connection->query($sql);
-
-            while($student = $stmt->fetch()) {
-                var_dump($student)
                 
-            }
 
-            ?>
+                $sql = "SELECT * FROM restaurant";
+                $stmt = $connection->query($sql);
+
+                while($restaurant = $stmt->fetch()) {
+                    echo "<div class='menukaart'>" . $restaurant["name"] . " - " . $restaurant["discription"] . " - " . $restaurant["price"] . "€" . "</div>";
+                }
+                
+
+                ?>
+            </div>
+            <style>
+                .menukaart {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                margin: 12px;
+                font-family: 'Inika', sans-serif;
+                font-size: 25px;
+                }
+            </style>
         </main>
         
         <footer>
