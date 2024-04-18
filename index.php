@@ -25,7 +25,40 @@ include("conn.php");
                         <a class="header-btn" href="index.php">Over Ons</a>
                         <div class="search-bar-titel">
                             <h1 class="header-txt">De Betoverde Pannenkoek</h1>
-                            
+                            <form method="post">
+                                <label></label>
+                                <input type="text" name="search" placeholder="Zoeken">
+                                <input type="submit" name="submit">
+                                <?php 
+                                if(isset($_POST["submit"])) {
+                                    $str = "".$_POST["search"];
+                                    $sth = $connection->prepare("SELECT * FROM `restaurant` WHERE name = '$str'");
+
+                                    $sth->setFetchMode(PDO::FETCH_OBJ);
+                                    $sth ->execute();
+
+                                    if($row = $sth->fetch()) {
+                                        ?>
+                                        <br><br><br>
+                                        <table>
+                                            <tr>
+                                                <th>name</th>
+                                                <th>discription</th>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo $row->name; ?></td>
+                                                <td><?php echo $row->discription;?></td>
+                                            </tr>
+                                        </table>
+                                        <?php
+                                    }
+                                        
+                                        else {
+                                            echo "name does not exist";
+                                        }
+                                }
+                                ?>
+                            </form>
                         </div>
                         <a class="header-btn" href="register.php">Menukaart</a>
                         <a class="header-btn" href="login.php">Contact</a>

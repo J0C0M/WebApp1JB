@@ -1,3 +1,17 @@
+<?php
+    session_start();   
+    
+    $header = "Location: admin.php";
+
+if (isset($_POST["login"])) {
+    if ($_POST["username"] == "admin" && $_POST["password"] == "geheim") {
+        $_SESSION["username"] = "admin";
+        header($header);
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,42 +25,23 @@
         <form class="login-form" action='login.php' name='login' method="post">
             <h2>Login</h2>
             <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" placeholder="Username" required>
+                <label for="username">Username
+                    <input type="text" name="username" placeholder="Username" required>
+                </label>
             </div>
             <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Password" required>
+                <label for="password">Password
+                    <input type="password" name="password" placeholder="Password" required>
+                </label>
             </div>
-            <button type="submit">Login</button>
+            <div>
+                <input type="submit" name="login" value="login">
+            </div>
             <a href="register.php">Register</a>
             
         </form>
         
-        <?php
-        session_start();
-        include 'conn.php';
-        if(empty($_POST['username']) || empty($_POST["password"])){
-            header("Location: login.php");
-            exit();
-        }
         
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        
-        $stmt = $connection->prepare("SELECT * FROM users WHERE username=:user AND password=:pass");
-        $stmt->execute(['user' => $username, 'pass' => $password]);
-        $user = $stmt->fetch();
-        
-        
-        if (!empty($user)){
-        $_SESSION["user"] = $username;
-            header ("Location: dashboard.php");
-            } else{
-                header("Location: login.php");
-            }
-        
-        ?>
     </div>
 </body>
 </html>
