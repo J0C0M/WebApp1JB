@@ -20,8 +20,8 @@ include("conn.php");
             <div class="header-overlapper header-text-pos">
                 
                 <img src="images/fardylogotransparent.png" class="logo-header-img">
-                <div class="header-middle-part">
-                        <a class="header-btn" href="index.php">home</a>
+                <div class="header-middle-part">  ?discription?
+                        <a class="header-btn" href="#ooc">home</a>
                         <a class="header-btn" href="index.php">Over Ons</a>
                         <div class="search-bar-titel">
                             <h1 class="header-txt">De Betoverde Pannenkoek</h1>
@@ -69,7 +69,9 @@ include("conn.php");
             </div>
         </header>
         <main>
+            <div id="ooc"></div>
             <div class="over-ons-container">
+                
                 <h1>over ons</h1>
                 <div class=""></div>
                 <div></div>
