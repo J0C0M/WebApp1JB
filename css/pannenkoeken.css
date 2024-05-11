@@ -76,6 +76,17 @@ html, body {
 
 /*Main page contents*/
 
+.admin {
+    margin: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    outline: none;
+    color: white;
+    background-color: blue;
+}
+
 .over-ons-container {
     display: flex;
     flex-direction: column;
