@@ -39,19 +39,19 @@
 
             include("conn.php");
 
-            $sql = "SELECT * FROM restaurant";
+            $sql = "SELECT * FROM menukaart";
             $result = $connection->query($sql);
 
-            while($restaurant = $result->fetch()) {
+            while($menukaart = $result->fetch()) {
                 echo "  
                 <tr class='menukaart'>
-                    <td>$restaurant[id]</td>
-                    <td>$restaurant[name]</td>
-                    <td>$restaurant[discription] </td>
-                    <td>$restaurant[price]</td>
+                    <td>$menukaart[id]</td>
+                    <td>$menukaart[name]</td>
+                    <td>$menukaart[discription] </td>
+                    <td>$menukaart[price]</td>
                     <td>
-                        <a class='btn' href='edit.php?id=$restaurant[id]'>Edit</a>
-                        <a class='btn' href='delete.php?id=$restaurant[id]'>Delete</a>
+                        <a class='btn' href='edit.php?id=$menukaart[id]'>Edit</a>
+                        <a class='btn' href='delete.php?id=$menukaart[id]'>Delete</a>
                     </td>
                 </tr>
                 ";

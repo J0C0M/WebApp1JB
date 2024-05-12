@@ -4,7 +4,7 @@ if (isset($_GET["id"])) {
 
     include("conn.php");
 
-    $sql = "DELETE FROM restaurant WHERE id=$id";
+    $sql = "DELETE FROM menukaart WHERE id=$id";
     $connection->query($sql);
 } 
 

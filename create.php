@@ -22,7 +22,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         // add a new client to database
-        $sql = "INSERT INTO restaurant (name, discription, price)" . 
+        $sql = "INSERT INTO menukaart (name, discription, price)" . 
             "VALUES ('$name', '$discription', '$price')";
         $result = $connection->query($sql);
 

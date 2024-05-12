@@ -32,7 +32,7 @@ include("conn.php");
                                 <?php 
                                 if(isset($_POST["submit"])) {
                                     $str = "".$_POST["search"];
-                                    $sth = $connection->prepare("SELECT * FROM `restaurant` WHERE name = '$str'");
+                                    $sth = $connection->prepare("SELECT * FROM `menukaart` WHERE name = '$str'");
 
                                     $sth->setFetchMode(PDO::FETCH_OBJ);
                                     $sth ->execute();
@@ -78,11 +78,11 @@ include("conn.php");
 
                 
 
-                $sql = "SELECT * FROM restaurant";
+                $sql = "SELECT * FROM menukaart";
                 $result = $connection->query($sql);
 
-                while($restaurant = $result->fetch()) {
-                    echo "<div class='menukaart'>" . $restaurant["name"] . " - " . $restaurant["discription"] . " - " . $restaurant["price"] . "€" . "</div>";
+                while($menukaart = $result->fetch()) {
+                    echo "<div class='menukaart'>" . $menukaart["name"] . " - " . $menukaart["discription"] . " - " . $menukaart["price"] . "€" . "</div>";
                 }
                 
 

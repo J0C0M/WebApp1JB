@@ -22,18 +22,18 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'GET' ) {
 
     $id = $_GET["id"];
 
-    $sql = "SELECT * FROM restaurant WHERE id=$id";
+    $sql = "SELECT * FROM menukaart WHERE id=$id";
     $result = $connection->query($sql);
-    $restaurant = $result->fetch();
+    $menukaart = $result->fetch();
 
-    if (!$restaurant) {
+    if (!$menukaart) {
         header("Location: admin.php");     
         exit;   
     }
 
-    $name = $restaurant["name"];
-    $discription = $restaurant["discription"];
-    $price = $restaurant["price"];
+    $name = $menukaart["name"];
+    $discription = $menukaart["discription"];
+    $price = $menukaart["price"];
     
 }
 else {
@@ -48,7 +48,7 @@ else {
             break;
         }
 
-        $sql = "UPDATE restaurant " .
+        $sql = "UPDATE menukaart " .
         "SET name=  '$name',  discription = '$discription', price = '$price' " . 
         "WHERE id = $id";
 
