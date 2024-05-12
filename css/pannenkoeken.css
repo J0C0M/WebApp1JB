@@ -95,6 +95,13 @@ html, body {
     width: 100%;
 }
 
+.admin-pag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
 
 
 /*placeholder*/
