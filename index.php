@@ -73,7 +73,7 @@ include("conn.php");
 
             
             <div class="restaurant">
-                <h1 class="menukaart">Betoverende Ontbijt Pannenkoeken:</h1>
+                <h1 class="menukaart">Menukaart:</h1>
                 <?php
 
                 
