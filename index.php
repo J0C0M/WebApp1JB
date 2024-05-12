@@ -20,7 +20,7 @@ include("conn.php");
             <div class="header-overlapper header-text-pos">
                 
                 <img src="images/fardylogotransparent.png" class="logo-header-img">
-                <div class="header-middle-part">  ?discription?
+                <div class="header-middle-part">
                         <a class="header-btn" href="#ooc">home</a>
                         <a class="header-btn" href="index.php">Over Ons</a>
                         <div class="search-bar-titel">
@@ -69,13 +69,7 @@ include("conn.php");
             </div>
         </header>
         <main>
-            <div id="ooc"></div>
-            <div class="over-ons-container">
-                
-                <h1>over ons</h1>
-                <div class=""></div>
-                <div></div>
-            </div>
+            
 
             
             <div class="restaurant">
@@ -85,9 +79,9 @@ include("conn.php");
                 
 
                 $sql = "SELECT * FROM restaurant";
-                $stmt = $connection->query($sql);
+                $result = $connection->query($sql);
 
-                while($restaurant = $stmt->fetch()) {
+                while($restaurant = $result->fetch()) {
                     echo "<div class='menukaart'>" . $restaurant["name"] . " - " . $restaurant["discription"] . " - " . $restaurant["price"] . "€" . "</div>";
                 }
                 

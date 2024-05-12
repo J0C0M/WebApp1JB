@@ -23,7 +23,7 @@
 <body>
     <h1>Admin pagina</h1>
     <h2>List Of Menu Items</h2>
-    <a class="btn" href="/html/create.php" role="button">New Item</a>
+    <a class="btn" href="create.php" role="button">New Item</a>
     <br>
     <table class="table">
         <thead>
@@ -40,9 +40,9 @@
             include("conn.php");
 
             $sql = "SELECT * FROM restaurant";
-            $stmt = $connection->query($sql);
+            $result = $connection->query($sql);
 
-            while($restaurant = $stmt->fetch()) {
+            while($restaurant = $result->fetch()) {
                 echo "  
                 <tr class='menukaart'>
                     <td>$restaurant[id]</td>
@@ -50,8 +50,8 @@
                     <td>$restaurant[discription] </td>
                     <td>$restaurant[price]</td>
                     <td>
-                        <a class='btn' href='/html/edit.php?id=$restaurant[id]'>Edit</a>
-                        <a class='btn' href='/html/delete.php?id=$restaurant[id]'>Delete</a>
+                        <a class='btn' href='edit.php?id=$restaurant[id]'>Edit</a>
+                        <a class='btn' href='delete.php?id=$restaurant[id]'>Delete</a>
                     </td>
                 </tr>
                 ";

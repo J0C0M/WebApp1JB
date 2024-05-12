@@ -102,9 +102,11 @@ html, body {
     margin: 30px;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+}
 
-
-/*placeholder*/
 .container {
     display: flex;
     justify-content: center;

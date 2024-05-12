@@ -1,8 +1,12 @@
-<?php
-include("conn.php");    
+<?php 
+$id = "";
+$name = "";
+$discription = "";
+$price = "";
 
+include("conn.php");
 
-
+$id = "";
 $name = "";
 $discription = "";
 $price = "";
@@ -10,40 +14,59 @@ $price = "";
 $errorMessage = "";
 $successMessage = "";
 
-if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
+if ( $_SERVER[ 'REQUEST_METHOD' ] == 'GET' ) {
+    if ( !isset($_GET["id"]) ) {
+        header("Location: admin.php");
+        exit;
+    }   
+
+    $id = $_GET["id"];
+
+    $sql = "SELECT * FROM clients WHERE id=$id";
+    $result = $connection->query($sql);
+    $restaurant = $result->fetch();
+
+    if (!$restaurant) {
+        header("Location: admin.php");     
+        exit;   
+    }
+
+    $name = $restaurant["name"];
+    $discription = $restaurant["discription"];
+    $price = $restaurant["price"];
+    
+}
+else {
+    $id = $_POST["id"];
     $name = $_POST["name"];
     $discription =  $_POST["discription"];
     $price =  $_POST["price"];
 
     do {
-        if ( empty($name) || empty($discription) || empty($price) ) {
+        if ( empty($id) || empty($name) || empty($discription) || empty($price) ) {
             $errorMessage = "All the fields are required";
             break;
         }
 
-        // add a new client to database
-        $sql = "INSERT INTO clients (name, discription, price)" . 
-            "VALUES ('$name', '$discription', '$price')";
+        $sql = "UPDATE clients " .
+        "SET name=  '$name',  discription = '$discription', price = '$price' " . 
+        "WHERE id = $id";
+
         $result = $connection->query($sql);
 
         if (!$result) {
             $errorMessage = "Invalid query: " . $connection->error;
             break;
-        }
+        } 
 
-        $name = "";
-        $discription = "";
-        $price = "";
+        $successMessage = "Client updated correctly";
 
-        $successMessage = "Client added correctly";
-
-        header("location: admin.php");
+        header("Location: admin.php");
         exit;
 
-    } while (false);
+    } while (true);
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -71,6 +94,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
 
         <form class="form" method="post">
+            <input type="hidden" value="<?php echo $id; ?>">
             <div>
                 <label>Name</label>
                 <div>
