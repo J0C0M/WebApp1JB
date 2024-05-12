@@ -22,7 +22,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'GET' ) {
 
     $id = $_GET["id"];
 
-    $sql = "SELECT * FROM clients WHERE id=$id";
+    $sql = "SELECT * FROM restaurant WHERE id=$id";
     $result = $connection->query($sql);
     $restaurant = $result->fetch();
 
@@ -48,7 +48,7 @@ else {
             break;
         }
 
-        $sql = "UPDATE clients " .
+        $sql = "UPDATE restaurant " .
         "SET name=  '$name',  discription = '$discription', price = '$price' " . 
         "WHERE id = $id";
 
@@ -94,7 +94,7 @@ else {
         ?>
 
         <form class="form" method="post">
-            <input type="hidden" value="<?php echo $id; ?>">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div>
                 <label>Name</label>
                 <div>
