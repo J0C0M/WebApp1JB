@@ -31,12 +31,16 @@ include("conn.php");
                                 <input type="submit" name="submit">
                                 <?php 
                                 if(isset($_POST["submit"])) {
-                                    $str = "".$_POST["search"];
-                                    $sth = $connection->prepare("SELECT * FROM `menukaart` WHERE name = '$str'");
+                                    $search = $_POST['search'];
+                                    $sql = "SELECT * FROM `menukaart` WHERE name LIKE :search";
+                                    
+                                    $sth = $pdo->prepare($sql);
+                                    $duif = "%$search%";
 
+                                    $sth->bindParam(":search", $duif);
                                     $sth->setFetchMode(PDO::FETCH_OBJ);
-                                    $sth ->execute();
-
+                                    $sth->execute();
+                                
                                     if($row = $sth->fetch()) {
                                         ?>
                                         <br><br><br>
@@ -51,11 +55,9 @@ include("conn.php");
                                             </tr>
                                         </table>
                                         <?php
+                                    } else {
+                                        echo "name does not exist";
                                     }
-                                        
-                                        else {
-                                            echo "name does not exist";
-                                        }
                                 }
                                 ?>
                             </form>
