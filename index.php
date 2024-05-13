@@ -79,7 +79,7 @@ include("conn.php");
                 
 
                 $sql = "SELECT * FROM menukaart";
-                $result = $connection->query($sql);
+                $result = $pdo->query($sql);
 
                 while($menukaart = $result->fetch()) {
                     echo "<div class='menukaart'>" . $menukaart["name"] . " - " . $menukaart["discription"] . " - " . $menukaart["price"] . "€" . "</div>";

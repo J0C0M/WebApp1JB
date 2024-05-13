@@ -1,71 +1,31 @@
 <?php 
-$id = "";
-$name = "";
-$discription = "";
-$price = "";
 
 include("conn.php");
 
-$id = "";
-$name = "";
-$discription = "";
-$price = "";
+/** 
+* @var PDO $pdo 
+*/
 
-$errorMessage = "";
-$successMessage = "";
+$sql = "SELECT * FROM menukaart WHERE ID = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(":id", $_GET['id']);
+$stmt->execute();
+$result = $stmt->fetch();
 
-if ( $_SERVER[ 'REQUEST_METHOD' ] == 'GET' ) {
-    if ( !isset($_GET["id"]) ) {
-        header("Location: admin.php");
-        exit;
-    }   
+if (isset($_POST['submit'])) {
+    $sql = "UPDATE menukaart SET name = :name, discription = :discription, price = :price WHERE ID = :id";
 
-    $id = $_GET["id"];
-
-    $sql = "SELECT * FROM menukaart WHERE id=$id";
-    $stmt = $pdo->query($sql);
-    $menukaart = $stmt->fetch();
-
-    if (!$menukaart) {
-        header("Location: admin.php");     
-        exit;   
-    }
-
-    $name = $menukaart["name"];
-    $discription = $menukaart["discription"];
-    $price = $menukaart["price"];
-    
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":id", $_GET['id']);
+    $stmt->bindParam(":name", $_POST['name']); 
+    $stmt->bindParam(":discription", $_POST['discription']);
+    $stmt->bindParam(":price", $_POST['price']);
+    $stmt->execute();
+    header('Location: admin.php');
+    exit;
 }
-else {
-    $id = $_POST["id"];
-    $name = $_POST["name"];
-    $discription =  $_POST["discription"];
-    $price =  $_POST["price"];
 
-    do {
-        if ( empty($id) || empty($name) || empty($discription) || empty($price) ) {
-            $errorMessage = "All the fields are required";
-            break;
-        }
 
-        $sql = "UPDATE menukaart " .
-        "SET name=  '$name',  discription = '$discription', price = '$price' " . 
-        "WHERE id = $id";
-
-        $stmt = $pdo->query($sql);
-
-        if (!$stmt) {
-            $errorMessage = "Invalid query: " . $pdo->error;
-            break;
-        } 
-
-        $successMessage = "Client updated correctly";
-
-        header("Location: admin.php");
-        exit;
-
-    } while (true);
-}
 ?>
 
 
@@ -94,23 +54,22 @@ else {
         ?>
 
         <form class="form" method="post">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div>
                 <label>Name</label>
                 <div>
-                    <input type="text" name="name" value="<?php echo $name; ?>">
+                    <input type="text" name="name" value="<?php echo $result['name']; ?>">
                 </div>
             </div>
             <div>
                 <label>Omschrijving</label>
                 <div>
-                    <input type="text" name="omschrijving" value="<?php echo $discription; ?>">
+                    <input type="text" name="discription" value="<?php echo $result['discription']; ?>">
                 </div>
             </div>
             <div>
                 <label>Prijs</label>
                 <div>
-                    <input type="text" name="prijs" value="<?php echo $price; ?>">
+                    <input type="text" name="price" value="<?php echo $result['price']; ?>">
                 </div>
             </div>
 
@@ -127,7 +86,7 @@ else {
 
             <div>
                 <div>
-                    <button type="text" name="omschrijving" value="">Submit</button>
+                    <button type="text" name="submit" value="">Submit</button>
                 </div>
                 <div>
                     <a class="btn" href="admin.php" role="button">Cancel</a>
