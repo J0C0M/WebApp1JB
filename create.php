@@ -1,46 +1,20 @@
 <?php
 include("conn.php");    
 
+/** 
+* @var PDO $pdo 
+*/
 
+if (isset($_POST['submit'])) {
+    $sql = "INSERT INTO menukaart(name, discription, price) VALUES (:name, :discription, :price)";
 
-$name = "";
-$discription = "";
-$price = "";
-
-$errorMessage = "";
-$successMessage = "";
-
-if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST["name"];
-    $discription =  $_POST["discription"];
-    $price =  $_POST["price"];
-
-    do {
-        if ( empty($name) || empty($discription) || empty($price) ) {
-            $errorMessage = "All the fields are required";
-            break;
-        }
-
-        // add a new client to database
-        $sql = "INSERT INTO menukaart (name, discription, price)" . 
-            "VALUES ('$name', '$discription', '$price')";
-        $result = $connection->query($sql);
-
-        if (!$result) {
-            $errorMessage = "Invalid query: " . $connection->error;
-            break;
-        }
-
-        $name = "";
-        $discription = "";
-        $price = "";
-
-        $successMessage = "Client added correctly";
-
-        header("location: admin.php");
-        exit;
-
-    } while (false);
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":name", $_POST['name']);
+    $stmt->bindParam(":discription", $_POST['discription']);
+    $stmt->bindParam(":price", $_POST['price']);
+    $stmt->execute();
+    header('Location: admin.php');
+    exit;
 }
 ?>
 
@@ -74,19 +48,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
             <div>
                 <label>Name</label>
                 <div>
-                    <input type="text" name="name" value="<?php echo $name; ?>">
+                    <input type="text" name="name" value="">
                 </div>
             </div>
             <div>
                 <label>Omschrijving</label>
                 <div>
-                    <input type="text" name="omschrijving" value="<?php echo $discription; ?>">
+                    <input type="text" name="discription" value="">
                 </div>
             </div>
             <div>
                 <label>Prijs</label>
                 <div>
-                    <input type="text" name="prijs" value="<?php echo $price; ?>">
+                    <input type="text" name="price" value="">
                 </div>
             </div>
 
@@ -103,7 +77,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div>
                 <div>
-                    <button type="text" name="omschrijving" value="">Submit</button>
+                    <button type="text" name="submit" value="">Submit</button>
                 </div>
                 <div>
                     <a class="btn" href="admin.php" role="button">Cancel</a>

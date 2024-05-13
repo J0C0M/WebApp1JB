@@ -22,6 +22,7 @@
 </head>
 <body>
     <h1>Admin pagina</h1>
+    <a href="index.php">Link naar home pag</a>
     <h2>List Of Menu Items</h2>
     <a class="btn" href="create.php" role="button">New Item</a>
     <br>
@@ -40,9 +41,9 @@
             include("conn.php");
 
             $sql = "SELECT * FROM menukaart";
-            $result = $connection->query($sql);
+            $stmt = $pdo->query($sql);
 
-            while($menukaart = $result->fetch()) {
+            while($menukaart = $stmt->fetch()) {
                 echo "  
                 <tr class='menukaart'>
                     <td>$menukaart[id]</td>

@@ -23,8 +23,8 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'GET' ) {
     $id = $_GET["id"];
 
     $sql = "SELECT * FROM menukaart WHERE id=$id";
-    $result = $connection->query($sql);
-    $menukaart = $result->fetch();
+    $stmt = $pdo->query($sql);
+    $menukaart = $stmt->fetch();
 
     if (!$menukaart) {
         header("Location: admin.php");     
@@ -52,10 +52,10 @@ else {
         "SET name=  '$name',  discription = '$discription', price = '$price' " . 
         "WHERE id = $id";
 
-        $result = $connection->query($sql);
+        $stmt = $pdo->query($sql);
 
-        if (!$result) {
-            $errorMessage = "Invalid query: " . $connection->error;
+        if (!$stmt) {
+            $errorMessage = "Invalid query: " . $pdo->error;
             break;
         } 
 
@@ -80,7 +80,7 @@ else {
 </head>
 <body>
     <div class="container my-5">
-        <h2>New Item</h2>
+        <h2>Edit Item</h2>
 
         <?php 
         if ( !empty($errorMessage)) {

@@ -5,7 +5,7 @@ if (isset($_GET["id"])) {
     include("conn.php");
 
     $sql = "DELETE FROM menukaart WHERE id=$id";
-    $connection->query($sql);
+    $pdo->query($sql);
 } 
 
 header("Location: admin.php");
