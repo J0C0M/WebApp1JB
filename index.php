@@ -90,6 +90,7 @@ include("conn.php");
 
                 ?>
             </div>
+            
             <style>
                 .menukaart {
                 display: flex;

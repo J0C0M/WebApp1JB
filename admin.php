@@ -6,7 +6,7 @@
 
     } else {
         header($header);
-    }
+    }7
 ?>
 
 
